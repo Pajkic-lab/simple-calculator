@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leanpay-calculator-deployment
+  labels:
+    app: leanpay-calculator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leanpay-calculator
+  template:
+    metadata:
+      labels:
+        app: leanpay-calculator
+    spec:
+      containers:
+      - name: leanpay-calculator
+        image: gcr.io/leanpay-playground-stage/simple-credit-calculator@sha256:cce3c4ae7837fdc47fbf51592ff804404da096907a95c497f26bf1bc7a0ae4e2
+        ports:
+        - containerPort: 8080
